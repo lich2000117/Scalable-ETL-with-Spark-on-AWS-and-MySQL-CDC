@@ -1,0 +1,26 @@
+# Configuration for PySpark ETL Project
+# This file specifies paths and sources used in the ETL process, can be easily modified by DS, DA
+
+
+earliest_entry_date: '2005-01-01' # earliest day of sales to look at, this is applied to invoice date, date filter.
+overdue_days: 14 # days between today and invoice issue date for overdue purposes, this is a custom engineered feature.
+
+# source table names, in this case, they are csv files.
+source_tables:
+  accounts: 'accounts.csv'
+  invoices: 'invoices.csv'
+  invoice_line_items: 'invoice_line_items.csv'
+  skus: "skus.csv"
+
+
+# directory for source tables, in this case, it is the local wdir.
+paths:
+  source_directory: 'data/'
+  # output directories for output parquet files
+  intermediate_output: 'output/intermediate_table/'
+  fact_output: 'output/fact_table/'
+
+# for further development, can also setup logging functions, files, such as create local log file or save log file to a remote S3 bucket, or Google Cloud Storage
+# logging:
+#   level: 'INFO'
+#   log_path: 'logs/etl_process.log'
